@@ -4,6 +4,7 @@ namespace WorldData.Models
 {
 public class Country
 {
+  private static List<Country> _allCountries = new List<Country>{};
   private string _code;
   private string _name;
   private string _continent;
@@ -14,6 +15,7 @@ public class Country
     _code = code;
     _name = name;
     _continent = continent;
+    _allCountries.Add(this);
     _cities = new List<City>{};
   }
 
@@ -33,13 +35,7 @@ public class Country
 
   public Country Find(string code)
   {
-    foreach(Country country in allCountries)
-    {
-      if (countryCode == code)
-      {
-        return country;
-      }
-    }
+    return _allCountries[code];
   }
 
   public void AddCity(City city)
