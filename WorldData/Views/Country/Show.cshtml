@@ -1,0 +1,23 @@
+@using WorldData.Models;
+@{
+  Layout = "_Layout";
+}
+<div class="container">
+    <h1>WorldData</h1>
+    <ul>
+      @if (Model.Count == 0)
+      {
+        <p>You have no items in your to do list!</p>
+      }
+      @if(Model.Count != 0)
+      {
+        @foreach (Country country in Model)
+        {
+          <li>@country.GetCode()</li>
+          <li>@country.GetName()</li>
+          <li>@country.GetContinent()</li>
+        }
+      }
+    </ul>
+    <h4><a href='/'>Home</a></h4>
+</div>

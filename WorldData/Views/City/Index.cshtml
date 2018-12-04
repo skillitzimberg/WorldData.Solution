@@ -1,0 +1,26 @@
+@using WorldData.Models;
+@{
+  Layout = "_Layout";
+}
+
+<div class="container">
+    <h1>WorldData</h1>
+    <ul>
+      @if (Model.Count == 0)
+      {
+        <p>You have no items in your to do list!</p>
+      }
+      @if(Model.Count != 0)
+      {
+        @foreach (City city in Model)
+        {
+          <li><a href='/city/@city.GetCityId()'>@city.GetName()</a></li>
+        }
+      }
+    </ul>
+    <a href="/city/new">Add a new city.</a>
+
+    <form action="/city/delete" method="post">
+      <button type="submit" name="button">Clear All Items</button>
+    </form>
+</div>
